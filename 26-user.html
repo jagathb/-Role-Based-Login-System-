@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            margin: 40px;
+            justify-content: center;
+
+        }
+        .user{
+            border-radius: 8px;
+            display:grid;
+            justify-content: center;
+            gap: 15px;
+            width: 80%;
+            padding: 25px;
+            height: fit-content;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          
+        }
+        h2{
+            text-transform: capitalize;
+        }
+        #btn{
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            background-color: rgba(47, 230, 15, 0.634);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="user">
+    <h2 id="head"></h2>
+    <p id="p"></p>
+    <button id="btn">logout</button>
+</div>
+
+    <script>
+        let getadmin=window.localStorage.getItem("user");
+        let obj=JSON.parse(getadmin);
+        let head=document.getElementById("head");
+        let p=document.getElementById("p");
+        let btn=document.getElementById("btn");
+        head.innerText=obj.user;
+        p.innerHTML=obj.password;
+        btn.addEventListener("click",()=>{
+            window.location.assign("./26-09-24.html");
+        })
+
+        
+    </script>
+</body>
+</html>

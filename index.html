@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        form{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            height:fit-content;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap:8px
+           
+        }
+        input{
+            height: 22px;
+        }
+        #lgn{
+            height: 28px;
+            width: 70%;
+            border: none;
+            color: white;
+            font-weight: 600;
+            background-color: rgba(47, 230, 15, 0.634);
+
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="user">username</label>
+        <input type="text" id="user">
+        <label for="pass">password</label>
+        <input type="password" id="pass">
+        <p id="p"></p>
+        <button id="lgn">login</button>
+    </form>
+
+    <script>
+        let data=[{user:"admin",password:"admin123",role:"admin"},{user:"user",password:"user123",role:"user"}]
+        let login=document.getElementById("lgn");
+
+        login.addEventListener("click",(e)=>{
+            e.preventDefault();
+            let user=document.getElementById("user").value;
+            let pass=document.getElementById("pass").value;
+            let p=document.getElementById("p")
+            if(user=="admin" && pass=="admin123"){
+                window.localStorage.setItem("adim",JSON.stringify(data[0]));
+                window.location.assign("./26-adim.html")
+             }else if(user=="user" && pass=="user123"){
+               window.localStorage.setItem("user",JSON.stringify(data[1]));
+               window.location.assign("./26-user.html")
+               
+
+             }else{
+                p.innerText="invalid credentails"
+             }
+    })
+    </script>
+</body>
+</html>
